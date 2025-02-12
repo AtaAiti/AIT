@@ -1,47 +1,19 @@
 public class Main {
-    public static void ArraysStatistics (int[] arr) {
+    public static void main(String[] args) {
+        Book printedBook1 = new PrintedBook("Java Programming", "James Gosling", 1995, 200, 500, "O'Reilly");
+        System.out.println(printedBook1.getBookInfo());
+        printedBook1.printBookDetails();
 
-        int sum = 0, avg, min = arr[0], max = arr[0];
-        int sec_min = arr[0], sec_max = arr[0];
+        PrintedBook printedBook2 = new PrintedBook("Clean Code", "Robert C. Martin", 2008, 300, 464, "Prentice Hall");
+        printedBook2.printBook();
 
-        for (int i = 0; i < arr.length; i++) {
+        Book eBook1 = new EBook("Effective Java", "Joshua Bloch", 2018, 100, 2.5, "PDF");
+        System.out.println(eBook1.getBookInfo());
+        eBook1.printBookDetails();
 
-            sum += arr[i];
+        System.out.println(printedBook1.printPrice());
+        System.out.println(printedBook2.printPrice());
+        System.out.println(eBook1.printPrice());
 
-            if (arr[i] < min) {
-                min = arr[i];
-            }
-
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-
-            if (arr[i] < sec_min && arr[i] > min) {
-                sec_min = arr[i];
-            }
-
-            if (arr[i] > sec_max && arr[i] < max) {
-                sec_max = arr[i];
-            }
-        }
-
-        avg = sum / arr.length;
-
-        System.out.println("Sum of array: " + sum);
-        System.out.println("Avg of array: " + avg);
-        System.out.println("Min of array: " + min);
-        System.out.println("Max of array: " + max);
-
-        System.out.println("Second min of array: " + sec_min);
-        System.out.println("Second max of array: " + sec_max);
-    }
-
-    public static void PalindromeChecker (String str) {
-
-        str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-
-        String rev_str = new StringBuilder(str).reverse().toString();
-
-        System.out.println(str.equals(rev_str));
     }
 }
