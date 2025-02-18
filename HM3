@@ -1,0 +1,84 @@
+abstract class Employee implements Payable{
+    protected String name;
+    protected int id;
+    protected int baseSalary;
+
+    public Employee(String name, int id, int baseSalary) {
+        this.name = name;
+        this.id = id;
+        this.baseSalary = baseSalary;
+    }
+
+    public abstract double calculateSalary();
+
+    public void displayEmployeeInfo() {
+        System.out.println(name + " " + id + " " + baseSalary);
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return calculateSalary();
+    }
+}
+
+public interface Payable {
+    public double getPaymentAmount();
+}
+
+public class FullTimeEmployee extends Employee implements Payable {
+    private final int bonus = 20;
+    private final boolean healthInsure = true;
+
+    public FullTimeEmployee(String name, int id, int baseSalary) {
+        super(name, id, baseSalary);
+    }
+
+    @Override
+    public double calculateSalary() {
+        return super.baseSalary * 1.2;
+    }
+
+    @Override
+    public void displayEmployeeInfo() {
+        System.out.println(super.name + " " + super.id + " " + super.baseSalary + " " + bonus + " " + healthInsure);
+    }
+}
+
+public class ContractEmployee extends Employee implements Payable{
+    private final int bonus = 0;
+    private final boolean healthInsure = false;
+    private final int hourlyRate = 12;
+    private int hours;
+
+    public ContractEmployee(String name, int id, int baseSalary, int hours) {
+        super(name, id, baseSalary);
+        this.hours = hours;
+    }
+
+
+    @Override
+    public double calculateSalary() {
+        return hours * hourlyRate;
+    }
+
+    @Override
+    public void displayEmployeeInfo() {
+        System.out.println(super.name + " " + super.id + " " + super.baseSalary + " " + bonus + " " + healthInsure + ' ' + hourlyRate);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee[] employees = new Employee[3];
+        employees[0] = new FullTimeEmployee("Atabek", 2, 50000);
+        employees[1] = new ContractEmployee("Yntymak", 1, 1000, 20);
+
+        for (Employee emp : employees) {
+            if (emp != null) {
+                emp.displayEmployeeInfo();
+                System.out.println(emp.getPaymentAmount());
+            }
+        }
+
+    }
+}
