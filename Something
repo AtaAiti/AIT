@@ -1,0 +1,108 @@
+class Student {
+    private final Integer id; 
+    private String name; 
+    private Integer age; 
+    private Set<String> courses; 
+
+    public Student(Integer id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.courses = new HashSet<>(); 
+    }
+
+    public Integer getId() {
+ return id;
+ }
+
+    public String getName() { 
+return name;
+ }
+
+    public void setName(String name) {
+ this.name = name;
+ }
+
+    public Integer getAge() {
+ return age;
+ }
+
+    public void setAge(Integer age) { 
+this.age = age;
+ }
+
+    public Set<String> getCourses() {
+ return courses;
+ }
+
+    public void enrollCourse(String course) {
+        courses.add(course);
+    }
+
+    public void dropCourse(String course) {
+        courses.remove(course);
+    }
+
+    @Override
+    public String toString() {
+        return "Студент: {id + " " + name + " " + age + " " + courses}";
+    }
+}
+
+class StudentManager {
+    private final Map<Integer, Student> students = new HashMap<>(); 
+
+    public void addStudent(Student student) {
+        students.put(student.getId(), student);
+    }
+
+    public void removeStudent(Integer id) {
+        students.remove(id);
+    }
+
+    public void updateStudent(Integer id, String name, Integer age, Set<String> courses) {
+        Student student = students.get(id);
+        if (student != null) {
+            student.setName(name);
+            student.setAge(age);
+            student.getCourses().clear();
+            student.getCourses().addAll(courses);
+        }
+    }
+
+    public List<Student> getAllStudentsSortedById() {
+        return students.values().stream()
+                .sorted(Comparator.comparing(Student::getId))
+                .toList();
+    }
+
+    public Student getStudentById(Integer id) {
+        return students.get(id);
+    }
+
+    public List<Student> getStudentsByCourse(String course) {
+        return students.values().stream()
+                .filter(student -> student.getCourses().contains(course))
+                .toList();
+    }
+}
+
+public class StudentManagementSystem {
+    public static void main(String[] args) {
+        StudentManager manager = new StudentManager();
+
+        Student Atabek = new Student(1, "Atabek", 20);
+        Atabek.enrollCourse("Программирование на Java");
+
+        manager.addStudent(Atabek);
+
+        System.out.println("Cтуденты:");
+        manager.getAllStudentsSortedById().forEach(System.out::println);
+
+        System.out.println("ID студента Atabek:");
+        System.out.println(manager.getStudentById(1));
+
+        System.out.println("Курс по Java':");
+        manager.getStudentsByCourse("Программирование на Java").forEach(System.out::println);
+    }
+}
