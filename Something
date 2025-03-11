@@ -50,7 +50,7 @@ this.age = age;
 }
 
 class StudentManager {
-    private final Map<Integer, Student> students = new HashMap<>(); 
+    private Map<Integer, Student> students = new HashMap<>(); 
 
     public void addStudent(Student student) {
         students.put(student.getId(), student);
