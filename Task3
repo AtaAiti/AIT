@@ -1,0 +1,121 @@
+    public static <T> List<T> method1(List<T> list1, List<T> list2) {
+        List<T> l = new ArrayList<>();
+        int size1 = list1.size();
+        int size2 = list2.size();
+        int i = 0, j = 0;
+        while(i < size1 || j < size2) {
+            if(i<size1) {
+                l.add(list1.get(i++));
+            }
+            if(j<size2){
+                l.add(list2.get(j++));
+            }
+        }
+        return l;
+    }
+
+    public static <K, V> void method2(Map<K, V> m){
+        for (Map.Entry<K, V> entry : m.entrySet()){
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
+    }
+
+public class TaskScheduler {
+    private PriorityQueue<Task> sched = new PriorityQueue<>();
+    private Queue<Task> pend = new LinkedList<>();
+
+    public void addTask(Task t){
+        sched.add(t);
+    }
+
+    public void processTask(){
+        if(!sched.isEmpty()){
+            Task t = sched.poll();
+            System.out.println(t);
+            if(!sched.isEmpty() && sched.peek().getPriority() < t.getPriority()){
+                Task del = sched.poll();
+                pend.add(del);
+                System.out.println(del);
+            }
+        }
+    }
+
+    public void displayScheduledTasks(){
+        for(Task t : sched){
+            System.out.println(t);
+        }
+    }
+
+    public void displayPendingTasks(){
+        for(Task t : pend){
+            System.out.println(t);
+        }
+    }
+
+    public void processPendingTasks(){
+        while(!pend.isEmpty()){
+            Task t = pend.poll();
+            System.out.println(t);
+        }
+    }
+}
+
+class Task implements Comparable<Task>{
+    private String taskName;
+    private Integer priority;
+    private Integer duration;
+
+    public Task(String task, int pri, int dur){
+        taskName = task;
+        priority = pri;
+        duration = dur;
+    }
+
+    @Override
+    public int compareTo(Task other) {
+        return Integer.compare(this.priority, other.priority);
+    }
+
+    @Override
+    public String toString(){
+        return priority + " " + taskName + " " + duration;
+    }
+
+    public Integer getPriority(){
+        return priority;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> l1 = List.of(1,3,5,7);
+        List<Integer> l2 = List.of(2,4,6,8);
+        List<Integer> l = method1(l1, l2);
+        System.out.println(l);
+
+        Map<String, Integer> m = Map.of("A", 1, "B", 2);
+        method2(m);
+
+        TaskScheduler scheduler = new TaskScheduler();
+        scheduler.addTask(new Task("Task1", 3, 20));
+        scheduler.addTask(new Task("Task2", 5, 45));
+        scheduler.addTask(new Task("Task3", 2, 30));
+        scheduler.addTask(new Task("Task4", 5, 50));
+        scheduler.addTask(new Task("Task5", 4, 25));
+        scheduler.displayScheduledTasks();
+        scheduler.processTask();
+        scheduler.displayScheduledTasks();
+        scheduler.displayPendingTasks();
+        scheduler.processTask();
+        scheduler.displayScheduledTasks();
+        scheduler.displayPendingTasks();
+        scheduler.processTask();
+        scheduler.displayScheduledTasks();
+        scheduler.displayPendingTasks();
+        scheduler.processTask();
+        scheduler.displayScheduledTasks();
+        scheduler.displayPendingTasks();
+        scheduler.processTask();
+        scheduler.displayScheduledTasks();
+        scheduler.displayPendingTasks();
+        scheduler.processPendingTasks();
