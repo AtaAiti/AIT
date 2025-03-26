@@ -1,0 +1,264 @@
+// ArrayList
+// 1. Write a Java program to create an array list, add some colors (strings) and print out the collection.
+
+ArrayList<String> task1 = new ArrayList<>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+System.out.println(task1);
+
+// 2. Write a Java program to iterate through all elements in an array list.
+
+ArrayList<String> task2 = new ArrayList<>(task1);
+for (String el : task2){
+  System.out.println(el);
+}
+
+// 3. Write a Java program to insert an element into the array list at the first position.
+
+ArrayList<String> task3 = new ArrayList<>(task2);
+task3.add(0, "grey");
+
+// 4. Write a Java program to retrieve an element (at a specified index) from a given array list.
+
+ArrayList<String> task4 = new ArrayList<>(task3);
+System.out.println(task3.get(0));
+
+// 5. Write a Java program to update an array element by the given element.
+
+ArrayList<String> task5 = new ArrayList<>(task4);
+task5.set(1, "red");
+
+// 6. Write a Java program to remove the third element from an array list.
+
+ArrayList<String> task6 = new ArrayList<>(task5);
+task5.remove(3);
+
+// LinkedList
+// 1. Write a Java program to append the specified element to the end of a linked list.
+
+LinkedList<String> task1 = new LinkedList<>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+
+// 2. Write a Java program to iterate through all elements in a linked list.
+
+LinkedList<String> task2 = new LinkedList<>(task1);
+for (String el : task2){
+  System.out.println(el);
+}
+
+// 3. Write a Java program to iterate through all elements in a linked list starting at the specified position.
+
+LinkedList<String> task3 = new LinkedList<>(task2);
+Iterator i = task3.listIterator(2);
+while (i.hasNext()) {
+  System.out.println(i.next());
+}
+
+// 4. Write a Java program to iterate a linked list in reverse order.
+
+LinkedList<String> task4 = new LinkedList<>(task3);
+Iterator i = task4.descendingIterator();
+while (i.hasNext()) {
+  System.out.println(i.next());
+}
+
+// 5. Write a Java program to insert the specified element at the specified position in the linked list.
+
+LinkedList<String> task5 = new LinkedList<>(task4);
+task5.add(2, "purple");
+
+// 6. Write a Java program to insert elements into the linked list at the first and last positions.
+
+LinkedList<String> task6 = new LinkedList<>(task5);
+task6.add(0, "first");
+task6.add("last");
+
+// HashSet:
+// 1. Write a Java program to append the specified element to the end of a hash set.
+
+HashSet<String> task1 = new HashSet<>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+
+// 2. Write a Java program to iterate through all elements in a hash list.
+
+HashSet<String> task2 = new HashSet<>(task1);
+Iterator<String> i = task2.iterator();
+while(i.hasNext()) 
+  System.out.println(i.next());
+}
+
+// 3. Write a Java program to get the number of elements in a hash set.
+
+HashSet<String> task3 = new HashSet<>(task2);
+System.out.println(task2.size());
+
+// 4. Write a Java program to empty an hash set.
+
+HashSet<String> task4 = new HashSet<>(task3);
+task2.removeAll(task4)
+
+// 5. Write a Java program to test if a hash set is empty or not.
+
+HashSet<String> task5 = new HashSet<>(task4);
+System.out.println(task5.isEmpty());
+
+// 6. Write a Java program to clone a hash set to another hash set.
+
+HashSet<String> task6 = task5.clone();
+
+// TreeSet:
+// 1. Write a Java program to create a tree set, add some colors (strings) and print out the tree set.
+
+TreeSet<String> task1 = new TreeSet<>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+System.out.println(task1);
+
+// 2. Write a Java program to iterate through all elements in a tree set.
+
+TreeSet<String> task2 = new TreeSet<>(task1);
+for (String el : task2) {
+  System.out.println(el);
+}
+
+// 3. Write a Java program to add all the elements of a specified tree set to another tree set.
+
+TreeSet<String> task3 = new TreeSet<>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+task3.addAll(task2);
+
+// 4. Write a Java program to create a reverse order view of the elements contained in a given tree set.
+
+TreeSet<String> task4 = new TreeSet<>(task3);
+Iterator i = task4.descendingIterator();
+System.out.println(i);
+
+// 5. Write a Java program to get the first and last elements in a tree set.
+
+TreeSet<String> task5 = new TreeSet<>(task4);
+System.out.println(task5.first());
+System.out.println(task5.last());
+
+// 6. Write a Java program to clone a tree set list to another tree set.
+
+TreeSet<String> task5 = task4.clone();
+
+// PriorityQueue:
+// 1. Write a Java program to create a priority queue, add some colors (strings) and print out the elements of the priority queue.
+
+PriorityQueue<String> task1 = new PriorityQueue<String>();
+task1.add("red");
+task1.add("yellow");
+task1.add("pink");
+System.out.println(task1);
+
+// 2. Write a Java program to iterate through all elements in the priority queue.
+
+PriorityQueue<String> task2 = new PriorityQueue<String>(task1);
+for (String el : task2) {
+    System.out.println(el);
+}
+
+// 3. Write a Java program to add all the elements of a priority queue to another priority queue.
+
+PriorityQueue<String> task3 = new PriorityQueue<String>();
+task3.add("red");
+task3.add("yellow");
+task3.add("pink");
+System.out.println(task3.addAll(task2));
+
+// 4. Write a Java program to insert a given element into a priority queue.
+
+PriorityQueue<String> task4 = new PriorityQueue<String>(task3);
+task4.offer("blue);
+
+// 5. Write a Java program to remove all elements from a priority queue.
+
+PriorityQueue<String> task5 = new PriorityQueue<String>(task4);
+task5.clear();
+
+// 6. Write a Java program to count the number of elements in a priority queue.
+
+PriorityQueue<String> task6 = new PriorityQueue<String>(task4);
+System.out.println(task6.size);
+
+// HashMap:
+// 1. Write a Java program to associate the specified value with the specified key in a HashMap.
+
+HashMap<Integer, String> task1 = new HashMap<>();
+task1.put(1, "orrange");
+task1.put(2, "grey");
+task1.put(3, "pink");
+task1.put(4, "yellow");
+task1.put(5, "red");
+
+// 2. Write a Java program to count the number of key-value (size) mappings in a map.
+
+HashMap<Integer, String> task2 = new HashMap<>(task1);
+System.out.println(task2.size);
+
+// 3. Write a Java program to copy all mappings from the specified map to another map.
+
+HashMap<Integer, String> task3 = new HashMap<>();
+System.out.println(task3.putAll(task2));
+
+// 4. Write a Java program to remove all mappings from a map.
+
+HashMap<Integer, String> task4 = new HashMap<>(task2);
+task4.clear();
+
+// 5. Write a Java program to check whether a map contains key-value mappings (empty) or not.
+
+HashMap<Integer, String> task5 = new HashMap<>(task2);
+System.out.println(task5.isEmpty());
+
+// 6. Write a Java program to get a shallow copy of a HashMap instance.
+
+HashMap<Integer, String> task6 = task5.clone();
+System.out.println(task6);
+
+// TreeMap:
+// 1. Write a Java program to associate the specified value with the specified key in a Tree Map.
+
+TreeMap<Integer, String> task1 = new TreeMap<>();
+task1.put(1, "orrange");
+task1.put(2, "grey");
+task1.put(3, "pink");
+task1.put(4, "yellow");
+task1.put(5, "red");
+
+// 2. Write a Java program to copy Tree Map's content to another Tree Map.
+
+TreeMap<Integer, String> task2 = new TreeMap<>(task1);
+
+// 3. Write a Java program to search for a key in a Tree Map.
+
+TreeMap<Integer, String> task3 = new TreeMap<>(task2);
+System.out.println(task3.get(3));
+
+// 4. Write a Java program to search for a value in a Tree Map.
+
+TreeMap<Integer, String> task4 = new TreeMap<>(task3);
+System.out.println(task4.containsValue("grey"));
+
+// 5. Write a Java program to get all keys from a Tree Map.
+
+TreeMap<Integer, String> task5 = new TreeMap<>(task4);
+Set<String> keys = task5.keySet();
+for (Integer key : keys) {
+  System.out.println(key);
+  
+}
+
+// 6. Write a Java program to delete all elements from a Tree Map.
+
+TreeMap<Integer, String> task6 = new TreeMap<>(task5);
+task6.clear();
